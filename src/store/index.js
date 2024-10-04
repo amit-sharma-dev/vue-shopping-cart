@@ -8,16 +8,19 @@ export default createStore({
   },
   mutations: {
     loadProducts(state, products) {
-      console.log('products', products)
       state.products = products;
     },
+    loadCart(state, products) {
+      state.cart = products;
+    },
     addToCart(state, product) {
-      console.log('cart', product)
       state.cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     removeFromCart(state, productId) {
       let updateCart = state.cart.filter(item => item.id != productId);
       state.cart = updateCart;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     }
   },
   actions: {
@@ -26,6 +29,11 @@ export default createStore({
         .then(response => {
           commit('loadProducts', response.data);
         })
+    },
+    loadCart({ commit }) {
+      if(localStorage.getItem("cart")) {
+        commit('loadCart', JSON.parse(localStorage.getItem("cart")));
+      }
     },
     addToCart ( {commit}, product) {
       commit('addToCart', product);
