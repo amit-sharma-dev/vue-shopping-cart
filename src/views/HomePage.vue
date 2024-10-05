@@ -17,7 +17,7 @@
     <div id="app">
     <pagination
       :totalPages="totalItem"
-      :perPage="10"
+      :perPage="perPage"
       :currentPage="currentPage"
       @pagechanged="onPageChange"
     />
@@ -35,7 +35,8 @@
     data() {
       return {
         currentPage: 1,
-        totalItem: 10
+        totalItem: 10,
+        perPage: 6
       }
     },
     computed: mapState([
@@ -52,9 +53,9 @@
         return this.cart.find(item => item.id == product.id);
       },
       onPageChange(page) {
-        this.$store.dispatch('loadProducts', page);
+        this.$store.dispatch('loadProducts', page, this.perPage);
         this.currentPage = page;
-        this.totalItem = Math.round(this.totalProduct / 10);
+        this.totalItem = Math.round(this.totalProduct / this.perPage);
       }
     }
   }

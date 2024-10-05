@@ -26,8 +26,8 @@ export default createStore({
     }
   },
   actions: {
-    loadProducts({ commit }, page = 1) {
-      axios.get('https://dummyjson.com/products?limit=6&skip=' + page * 6 )
+    loadProducts({ commit }, page = 1, perPage = 6) {
+      axios.get('https://dummyjson.com/products?limit='+ perPage + '&skip=' + page * perPage )
         .then(response => {
           commit('loadProducts', response.data);
         })
