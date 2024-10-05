@@ -4,7 +4,7 @@
   
         <div v-for="(product, index) in cart"  :key="index" class="item">
           <div @click="this.$store.dispatch('removeFromCart', product.id)" class="remove">Remove item</div>
-          <div class="photo"><img :src="product.image" alt=""></div>
+          <div class="photo"><img :src="product.thumbnail" alt=""></div>
           <div class="description">{{ product.title }}</div>
           <div class="price">
             <span class="quantity-area">

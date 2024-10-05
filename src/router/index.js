@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/HomePage.vue'
 import Basket from '../views/ShoppingBasket.vue'
 import Product from '../views/Product.vue'
+import Pagination from '../views/Pagination.vue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/product',
     name: 'Product',
     component: Product
+  },
+  {
+    path: '/pagination',
+    name: 'Pagination',
+    component: Pagination
   },
 ]
 

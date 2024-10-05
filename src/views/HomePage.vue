@@ -4,28 +4,44 @@
   
         <div v-for="(product, index) in this.products" :key="index"
         class="product" :class="{inBag: isInCart(product)}">
-          <div class="product-image" :style="{backgroundImage: 'url(' + product.image + ')'}"></div>
+          <div class="product-image" :style="{backgroundImage: 'url(' + product.thumbnail + ')'}"></div>
           <h4>{{ product.title }}</h4>
-          <p class="price">US$ {{ product.price.toFixed(2) }}</p>
+          <p class="price">US$ {{ product.price }}</p>
           <button v-if="!isInCart(product)" @click="addToCart(product)">Add to bag</button>
           <button v-else @click="this.$store.dispatch('removeFromCart', product.id)" class="remove">Remove</button>
         </div>
         
       </div>
     </div>
+
+    <div id="app">
+    <pagination
+      :totalPages="totalItem"
+      :perPage="10"
+      :currentPage="currentPage"
+      @pagechanged="onPageChange"
+    />
+  </div>
   </template>
   
   <script>
-   import { mapState } from 'vuex';
+  import { mapState } from 'vuex';
+  import Pagination from '../views/Pagination.vue'
   export default {
     name: 'HomePage',
+    components: {
+      Pagination
+    },
     data() {
       return {
+        currentPage: 1,
+        totalItem: 10
       }
     },
     computed: mapState([
       'products',
-      'cart'
+      'cart',
+      'totalProduct'
     ]),
     methods: {
       addToCart(product) {
@@ -34,6 +50,11 @@
       },
       isInCart(product) {
         return this.cart.find(item => item.id == product.id);
+      },
+      onPageChange(page) {
+        this.$store.dispatch('loadProducts', page);
+        this.currentPage = page;
+        this.totalItem = Math.round(this.totalProduct / 10);
       }
     }
   }

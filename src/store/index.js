@@ -4,11 +4,13 @@ import axios from "axios";
 export default createStore({
   state: {
     products: [],
-    cart: []
+    cart: [],
+    totalProduct: 6
   },
   mutations: {
     loadProducts(state, products) {
-      state.products = products;
+      state.products = products.products;
+      state.totalProduct = products.total;
     },
     loadCart(state, products) {
       state.cart = products;
@@ -24,8 +26,8 @@ export default createStore({
     }
   },
   actions: {
-    loadProducts({ commit }) {
-      axios.get('https://fakestoreapi.com/products')
+    loadProducts({ commit }, page = 1) {
+      axios.get('https://dummyjson.com/products?limit=6&skip=' + page * 6 )
         .then(response => {
           commit('loadProducts', response.data);
         })
