@@ -1,9 +1,10 @@
 # VueJs Shopping Cart
 
-It includes some basic concept of vue js development like routing, state management, pagination.
+- It includes some basic concept of vue js development like routing, state management, pagination.
 
-## Recommended IDE Setup
-`git clone https://github.com/amit-sharma-dev/vue-shopping-cart.git`
-`cd vue-shopping-cart`
-`npm install`
-`npm run dev`
+## Setup
+- Clone the repo `git clone https://github.com/amit-sharma-dev/vue-shopping-cart.git`
+- Go to directory `cd vue-shopping-cart`
+- Run command `npm install`
+- Start the server: `npm run dev`
+- View in browser: <http://localhost:5173>
