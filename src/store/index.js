@@ -5,7 +5,8 @@ export default createStore({
   state: {
     products: [],
     cart: [],
-    totalProduct: 6
+    totalProduct: 6,
+    user: {}
   },
   mutations: {
     loadProducts(state, products) {
@@ -23,6 +24,10 @@ export default createStore({
       let updateCart = state.cart.filter(item => item.id != productId);
       state.cart = updateCart;
       localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    loadUser(state, user) {
+      console.log("🚀 ~ loadUser ~ user:", user)
+      state.user = user;
     }
   },
   actions: {
@@ -44,6 +49,11 @@ export default createStore({
       if(confirm('Are you sure to remove the item from cart ?')) {
         commit('removeFromCart', productId);
       }
+    },
+    loadUser({ commit }, user) {
+      console.log("🚀 ~ loadUser ~ JSON.parse(localStorage.getItem:", JSON.parse(localStorage.getItem("user")))
+      let userDetails = user ?? JSON.parse(localStorage.getItem("user"));
+      commit('loadUser', userDetails);
     }
   },
   modules: {

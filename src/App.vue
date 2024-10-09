@@ -1,7 +1,12 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> -
-    <router-link to="/basket">Shopping Cart ({{ this.cart.length }})</router-link>
+    <router-link to="/basket">Shopping Cart ({{ this.cart.length }})</router-link> - 
+    <router-link to="/register">Register</router-link>
+
+    <div class="right-nav">
+      <router-link to="/" v-if="this.user">Welcome {{ this.user.firstname }}</router-link>
+    </div>
   </div>
   <router-view/>
 </template>
@@ -12,9 +17,11 @@ import { mapState } from 'vuex';
     created() {
       this.$store.dispatch('loadProducts');
       this.$store.dispatch('loadCart');
+      this.$store.dispatch('loadUser');
     },
     computed: mapState([
-      'cart'
+      'cart',
+      'user'
     ]),
   }
   

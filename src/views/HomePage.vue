@@ -42,7 +42,8 @@
     computed: mapState([
       'products',
       'cart',
-      'totalProduct'
+      'totalProduct',
+      'user'
     ]),
     methods: {
       addToCart(product) {
