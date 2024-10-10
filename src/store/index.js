@@ -26,7 +26,6 @@ export default createStore({
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     loadUser(state, user) {
-      console.log("🚀 ~ loadUser ~ user:", user)
       state.user = user;
     }
   },
@@ -51,7 +50,6 @@ export default createStore({
       }
     },
     loadUser({ commit }, user) {
-      console.log("🚀 ~ loadUser ~ JSON.parse(localStorage.getItem:", JSON.parse(localStorage.getItem("user")))
       let userDetails = user ?? JSON.parse(localStorage.getItem("user"));
       commit('loadUser', userDetails);
     }
