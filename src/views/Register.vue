@@ -211,6 +211,7 @@ const submitForm = () => {
     }
     // const store = useStore();
     // store.dispatch('loadUser', user);
+    alert("Form submitted successfully!");
     localStorage.setItem("user", JSON.stringify(user));
     router.push('/'); 
     // Add logic to send data to the server if needed
