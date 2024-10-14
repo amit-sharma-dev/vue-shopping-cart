@@ -36,6 +36,24 @@ describe('Shopping cart', () => {
       cy.get('.products .product h4').first().should('have.text', 'Chanel Coco Noir Eau De')
       cy.get('.products .product h4').last().should('have.text', 'Annibale Colombo Sofa')
     })
+
+    it('can add items in cart', () => {
+        // We'll store our item text in a variable so we can reuse it
+        let counter = 0;
+        cy.get('.add-to-cart-7').click()
+        counter++;
+        cy.get('#nav .shopping-cart')
+          .should('have.text', 'Shopping Cart (' + counter + ')')
+      })
+
+      it('can remove items in cart', () => {
+        // We'll store our item text in a variable so we can reuse it
+        let counter = 0;
+        cy.get('.remove-7').click()
+        
+        cy.get('#nav .shopping-cart')
+          .should('have.text', 'Shopping Cart (' + counter + ')')
+      })
   
     
   })

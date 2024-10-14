@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> -
-    <router-link to="/basket">Shopping Cart ({{ this.cart.length }})</router-link> - 
-    <router-link to="/register">Register</router-link>
+    <router-link to="/" class="home">Home</router-link> -
+    <router-link to="/basket" class="shopping-cart">Shopping Cart ({{ this.cart.length }})</router-link> - 
+    <router-link to="/register" class="register">Register</router-link>
 
     <div class="right-nav">
       <router-link to="/" v-if="this.user">Welcome {{ this.user.firstname }}</router-link>

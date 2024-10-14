@@ -7,8 +7,8 @@
           <div class="product-image" :style="{backgroundImage: 'url(' + product.thumbnail + ')'}"></div>
           <h4>{{ product.title }}</h4>
           <p class="price">US$ {{ product.price }}</p>
-          <button v-if="!isInCart(product)" @click="addToCart(product)">Add to bag</button>
-          <button v-else @click="this.$store.dispatch('removeFromCart', product.id)" class="remove">Remove</button>
+          <button :class="'add-to-cart-'+product.id" v-if="!isInCart(product)" @click="addToCart(product)">Add to bag</button>
+          <button v-else @click="this.$store.dispatch('removeFromCart', product.id)" :class="'remove-'+product.id">Remove</button>
         </div>
         
       </div>
