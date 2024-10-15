@@ -59,7 +59,7 @@
 
       </div>
 
-      <button type="submit">Submit</button>
+      <button id="submit" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -68,7 +68,7 @@
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 // import { mapState } from 'vuex';
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 
 // export default {
 //     name: 'Register',

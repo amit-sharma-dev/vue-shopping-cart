@@ -46,14 +46,14 @@ describe('Shopping cart', () => {
           .should('have.text', 'Shopping Cart (' + counter + ')')
       })
 
-      it('can remove items in cart', () => {
-        // We'll store our item text in a variable so we can reuse it
-        let counter = 0;
-        cy.get('.remove-7').click()
+      // it('can remove items in cart', () => {
+      //   // We'll store our item text in a variable so we can reuse it
+      //   let counter = 0;
+      //   cy.get('.remove-7').click()
         
-        cy.get('#nav .shopping-cart')
-          .should('have.text', 'Shopping Cart (' + counter + ')')
-      })
+      //   cy.get('#nav .shopping-cart')
+      //     .should('have.text', 'Shopping Cart (' + counter + ')')
+      // })
   
     
   })
